@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <title>Usuários</title>
+        {% include "include_head.html" %}
+    </head>
+
+    <body>
+        {% include "include_menu.html" %}
+        <h2>Usuários - Normal</h2>
+        <table border="1">
+            <tr>
+                <td>Nome</td>
+                <td>Email</td>
+            </tr>
+            {% for o in array_usuarios %}
+            <tr>
+                <td>{{ o.nome }}</td>
+                <td>{{ o.email }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+  </body>
+
+
+</html>

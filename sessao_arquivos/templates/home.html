@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <title>Home</title>
+        {% include "include_head.html" %}
+    </head>
+
+    <body>
+        {% include "include_menu.html" %}
+        <h2>Home</h2>
+        Nome usuário logado {{usuario['nome']}}, email: {{usuario.email}}
+        <br>
+        <img src="static/imagens/imagem_teste.png" width="300">
+        <script>
+            $('img').mouseover(function () {
+                    $(this).animate({'margin-top':'+=10px'});
+                })
+                .mouseenter(function () {
+                    console.log('entrou')
+                    $(this).animate({'width':'+=100px'},1000);
+                })
+                .mouseout(function () {
+                    console.log('saiu')
+                    var x = $(this);
+                    setTimeout( function () {
+                        x.animate({width:300},600);
+                    },333)
+                })
+        </script>
+  </body>
+
+
+</html>

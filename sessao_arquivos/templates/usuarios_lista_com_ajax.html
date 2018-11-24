@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <title>Usuários</title>
+        {% include "include_head.html" %}
+        <script>
+            var primeira_vez = true;
+            $(function(){
+                console.log('* body completamente lido!');
+            });
+            function busca_usuarios()
+            {
+                var imp_pes =  $('#imp_pes');
+                if(primeira_vez){
+                    $('#tabela_usuarios tbody').html('');
+                    primeira_vez = false;
+                }
+                // http://api.jquery.com/jquery.ajax/
+                var meu_ajax = $.ajax({
+                    url: "/ajax/get_lista_usuarios/",
+                    method: "GET",
+                    data : {imp_pes:imp_pes.val() },
+                    dataType: "json"
+                 });
+
+                meu_ajax.fail(function( jqXHR, textStatus ) {
+                    console.log( "meu_ajax fail textStatus = " + textStatus );
+                });
+
+                meu_ajax.done(function( lista_recebida ){
+                    console.log( " * lista_recebida", lista_recebida );
+                    var str = '';
+                    imp_pes.val('')
+                    for( var linha in lista_recebida ){
+                        console.log( " - - linha["+linha+'] = ', lista_recebida[linha] );
+                        str+=
+                            '<tr>'+
+                            '    <td>'+lista_recebida[linha].nome+'</td>'+
+                            '    <td>'+lista_recebida[linha].email+'</td>'+
+                            '</tr>';
+                    }
+                    $('#tabela_usuarios tbody').html(str);
+                });
+            }
+        </script>
+    </head>
+
+    <body>
+        {% include "include_menu.html" %}
+        <h2>Usuários - Ajax</h2>
+        <input type="text" id="imp_pes" placeholder="Nome para pesquisa"/>
+        <input type="button" onclick=" busca_usuarios() " value=" * JS busca_usuarios *  ">
+        <table id="tabela_usuarios" border="1">
+            <thead>
+                <tr>
+                    <td>Nome</td>
+                    <td>Email</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td colspan="2">Clique em buscar para carregar os usuarios</td>
+                </tr>
+            </tbody>
+        </table>
+  </body>
+
+
+</html>
