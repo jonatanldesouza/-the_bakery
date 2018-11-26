@@ -15,10 +15,10 @@
             <div class="col-2"></div>
             <div class="col-8">
                 <div class="card">
-                    <div class="card-header bg-info">
+                    <div class="card-header bg-secondary">
                         <ul class="nav nav-tabs card-header-tabs">
                             <li class="nav-item">
-                                <a class="nav-link active">Lista de Produtos</a>
+                                <a class="nav-link active">Lista de Fornecedores</a>
                             </li>
                         </ul>
                     </div>
@@ -31,8 +31,6 @@
                                     <th scope="col">Id Interno</th>
                                     <th scope="col">Nome</th>
                                     <th scope="col">Descrição</th>
-                                    <th scope="col">Valor</th>
-                                    <th scope="col">Estoque</th>
                                     <th scope="col">Ações</th>
                                 </tr>
                             </thead>
@@ -43,9 +41,7 @@
                                     <td>{{item[1]}}</td>
                                     <td>{{item[2]}}</td>
                                     <td>{{item[3]}}</td>
-                                    <td>{{item[4]}}</td>
-                                    <td>{{item[5]}}</td>
-                                    <td><a href="/deleteP/{{item[0]}}">Deletar</a></td>
+                                    <td><a href="/deleteF/{{item[0]}}">Deletar</a></td>
                                 </tr>
                                 {% endfor %}
                             </tbody>
@@ -53,10 +49,10 @@
                         {% endif %}
                         {% if lista == [] %}
                         <div class="alert alert-warning" role="alert">
-                            Nenhum produto cadastrado!!
+                            Nenhum Fornecedor cadastrado!!
                         </div>
                         <div class="form-group">
-                            <a href="/cadastrarP" class="btn btn-primary">Cadastrar novo produto</a>
+                            <a href="/cadastrarF" class="btn btn-primary">Cadastrar novo fornecedor</a>
                         </div>
                         {% endif %}
                     </div>
@@ -72,7 +68,7 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="form-group">
-                            <a href="/cadastrarP" class="btn btn-primary">Cadastrar novo produto</a>
+                            <a href="/cadastrarF" class="btn btn-primary">Cadastrar novo fornecedor</a>
                         </div>
                     </div>
                 </div>

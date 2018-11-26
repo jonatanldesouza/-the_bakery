@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+    {% include "head.html" %}
+</head>
+
+<body>
+    {% include "menu.html" %}
+
+    </br>
+    <div class="row">
+        {% for item in lista %}
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">{{item[2]}}</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">{{item[6]}}</h6>
+                    <p class="card-text">R${{item[4]}}</p>
+                    <a href="/listP/{{item[0]}}">Ver produto</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    <div class="row ver_mais">
+        <button  type="button" class="btn btn-default"><a href="/listP">Ver todos os produtos</a></button>
+    </div>
+
+</body>
+
+</html>
